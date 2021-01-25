@@ -6,7 +6,7 @@ mongoose
     useNewUrlParser: true,
   })
   .then((res) => {
-    console.log(res);
+    console.log("connected.......");
   })
   .catch((err) => {
     console.log(err);

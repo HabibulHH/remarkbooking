@@ -1,7 +1,11 @@
 const express = require("express");
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
+const routes = require("./route");
+
 require("./db");
 const app = express();
+
+app.use(routes);
 
 app.use("/rooms", express.static("upload/images"));
 const multer = require("multer");
@@ -24,9 +28,9 @@ app.get("/", (request, response) => {
   response.status(200).send({ success: "ok.." });
 });
 
-app.post("/:id", upload.single("profile"), (request, response) => {
+app.post("/saveimage", upload.single("rooms"), (request, response) => {
   const { query, params, body, file } = request;
-  console.log(query, params, body, file);
+  //console.log(query, params, body, file);
   response.status(200).json({
     success: 1,
     profile_url: `http://localhost:8081/rooms/${request.file.filename}`,
