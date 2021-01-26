@@ -1,15 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const routes = require("./route");
-
+const multer = require("multer");
+const path = require("path");
 require("./db");
 const app = express();
 
 app.use(routes);
 
 app.use("/rooms", express.static("upload/images"));
-const multer = require("multer");
-const path = require("path");
 
 const storage = multer.diskStorage({
   destination: "./upload/images",
