@@ -1,10 +1,11 @@
 import "../styles/App.css";
 import { showDetails } from "../actions";
+import RoomList from "./room-list";
 
 function App() {
   return (
     <div className="App">
-      <p>Simaple app components</p>
+      <RoomList />
     </div>
   );
 }
