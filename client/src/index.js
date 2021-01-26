@@ -4,12 +4,17 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
+import thunk from "redux-thunk";
+import "bootstrap/dist/css/bootstrap.css";
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 
+let store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,
