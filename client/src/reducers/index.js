@@ -8,11 +8,16 @@ const roomsReducer = () => {
   ];
 };
 
-const selectedRoomReducer = (selected = null, action) => {
-  if (action.type === CONSTANTS.ROOM_SELECTED) {
-    return action.paylaod;
+const selectedRoomReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ROOM_SELECTED":
+      return {
+        ...state,
+        selectedRoom: action.payload,
+      };
+    default:
+      return state;
   }
-  return selected;
 };
 
 export default combineReducers({
