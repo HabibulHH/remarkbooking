@@ -10,7 +10,7 @@ const roomsReducer = () => {
 
 const selectedRoomReducer = (state = {}, action) => {
   switch (action.type) {
-    case "ROOM_SELECTED":
+    case CONSTANTS.ROOM_SELECTED:
       return {
         ...state,
         selectedRoom: action.payload,
