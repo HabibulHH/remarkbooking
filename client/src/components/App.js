@@ -1,4 +1,5 @@
 import "../styles/App.css";
+import { showDetails } from "../actions";
 
 function App() {
   return (
