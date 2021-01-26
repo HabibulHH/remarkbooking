@@ -8,10 +8,10 @@ import Header from "./Header";
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Route path="/search" excat component={RoomList} />
-        <Route path="/listroom" excat component={CreateRoom} />
+        <Route path="/create" excat component={CreateRoom} />
       </BrowserRouter>
     </div>
   );

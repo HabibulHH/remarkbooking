@@ -1,9 +1,9 @@
 import "./styles.css";
-import RoomList from "./RoomList";
-import CreateRoom from "./CreateRoom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Header() {
+  const history = useHistory();
+  function handleClick() {}
   return (
     <header>
       <nav id="mainMenu" className="navbar navbar-expand-md navbar-light py-0">
@@ -21,14 +21,25 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="mobileMenuToggle">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="javascript:">
-                  FOR YOU
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  onClick={() => {
+                    history.push("/search");
+                  }}
+                >
+                  HOMES
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="javascript:">
-                  HOMES
+                <a
+                  className="nav-link"
+                  onClick={() => {
+                    history.push("/create");
+                  }}
+                  href="javascript:"
+                >
+                  List Home
                 </a>
               </li>
               <li className="nav-item">
