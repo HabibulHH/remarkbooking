@@ -1,4 +1,4 @@
-import React, { Component, components } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { showDetails, fetchRooms } from "../actions";
 import { v4 as uuidv4 } from "uuid";
@@ -27,8 +27,8 @@ class RoomList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return { rooms: state.rooms.rooms };
+const mapStateToProps = ({ rooms }) => {
+  console.log(typeof rooms);
+  return { rooms: rooms };
 };
 export default connect(mapStateToProps, { showDetails, fetchRooms })(RoomList);
