@@ -1,0 +1,147 @@
+/***** Google fonts *****/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+/*** Fixed Height and Parent div flex ***/
+.verticalCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/***********css Animation*********/
+#mainMenu {
+    border-bottom: 1px solid #dbdbdb;
+    box-shadow: 0 3px 6px 0 rgba(219, 219, 219, 0.7);
+}
+
+#mainMenu ul.navbar-nav {
+}
+
+#mainMenu ul.navbar-nav li.nav-item {
+    padding: 0 20px;
+}
+
+#mainMenu ul.navbar-nav li.nav-item a.nav-link {
+    color: #484848;
+    padding: 20px 0;
+    border-bottom: 3px solid transparent;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#mainMenu ul.navbar-nav li.nav-item.active a.nav-link {
+    color: #00a799;
+    border-color: #00a799;
+}
+
+#searchBar {
+    margin: 50px 0 20px 0;
+    height: 120px;
+}
+
+#searchBar .bg-img {
+    background-color: #333333;
+    background-image: url("../img/filter-bg.png");
+    background-position: center;
+}
+
+#searchBar .title-texts {
+    color: #ffffff;
+}
+
+#searchBar .title-texts p {
+    font-weight: 600
+}
+
+#searchBar .filter {
+    height: 48px;
+    background-color: #f5bc42;
+    padding: 4px 2px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+#searchBar .filter .search-input {
+    margin: 0 2px;
+    flex: 1;
+    width: 100%;
+    background-color: #ffffff;
+    height: 40px;
+    padding: 0 15px 0 45px;
+}
+
+#searchBar .filter .search-input input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    box-shadow: none;
+}
+#searchBar .filter .search-input input:focus {
+    box-shadow: none;
+    outline: 0 !important;
+}
+
+#searchBar .filter svg,
+#searchBar .filter i {
+    position: absolute;
+    left: 10px;
+    color: #bdbdbd;
+    font-size: 18px;
+    top: 10px;
+}
+
+#searchBar .filter .search-input svg,
+#searchBar .filter .search-input i {
+    position: absolute;
+    left: 17px;
+    top: 15px;
+}
+
+#searchBar .filter .search-input {
+}
+
+#searchBar .filter .date-range {
+    margin: 0 2px;
+    flex: 1;
+    max-width: 200px;
+    background-color: #ffffff;
+    height: 40px;
+}
+
+#searchBar .filter .room-select {
+    margin: 0 2px;
+    flex: 1;
+    max-width: 250px;
+    background-color: #ffffff;
+    height: 40px;
+}
+
+#searchBar .filter .search-button {
+    margin: 0 2px;
+    flex: 1;
+    background-color: #ffffff;
+    height: 40px;
+    max-width: 100px;
+}
+#searchBar .filter .search-button button {
+    height: 40px;
+    width: 100%;
+    background-color: #3178c6;
+    border: none;
+    outline: 0 !important;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+#searchBar .filter .search-button button:focus {
+    outline: 0 !important;
+}

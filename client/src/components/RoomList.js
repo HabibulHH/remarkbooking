@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { showDetails, fetchRooms } from "../actions";
 import { v4 as uuidv4 } from "uuid";
+import SearchBar from "./Search";
 
 class RoomList extends Component {
   componentDidMount() {
@@ -23,12 +24,16 @@ class RoomList extends Component {
     });
   }
   render() {
-    return <div>{this.renderList()}</div>;
+    return (
+      <div>
+        <SearchBar />
+        {this.renderList()}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = ({ rooms }) => {
-  console.log(typeof rooms);
   return { rooms: rooms };
 };
 export default connect(mapStateToProps, { showDetails, fetchRooms })(RoomList);
