@@ -7,6 +7,9 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
+import "bootstrap/dist/css/bootstrap.css";
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 
 let store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
