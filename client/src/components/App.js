@@ -1,6 +1,6 @@
 import "../styles/App.css";
 import { showDetails } from "../actions";
-import RoomList from "./RoomList";
+import RoomList from "./Roomlist";
 import CreateRoom from "./CreateRoom";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";

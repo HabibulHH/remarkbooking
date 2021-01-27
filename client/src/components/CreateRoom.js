@@ -2,21 +2,50 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchRooms } from "../actions";
 import { Uploader } from "./Uploader";
-import axios from "axios";
-import "./styles.css";
-import "bootstrap/dist/css/bootstrap.css";
 
 class CreateRoom extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.getFilesUrl = this.getFilesUrl.bind(this);
+    this.state = {
+      title: "",
+      descriptipon: "",
+      location: "",
+      links: [],
+      city: "",
+      mobile: "",
+      availableFrom: new Date(),
+      availableTill: new Date(),
+      capacity: "",
+    };
   }
+  handleChange(event) {
+    event.preventDefault();
+    const target = event.target;
+    let value;
+    if (target.type === "checkbox") {
+      value = target.checked;
+    } else if (target.type === "date") {
+      value = target.valueAsDate.toJSON().slice(0, 10);
+    } else {
+      value = target.value;
+    }
+    //const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    console.log(name);
+    console.log(value);
+    this.setState({
+      [name]: value,
+    });
+  }
+
   componentDidMount() {}
 
   handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(data);
+    console.log(this.state);
   }
   getFilesUrl(url, remove) {
     let urls = [];
@@ -24,168 +53,123 @@ class CreateRoom extends Component {
       urls = urls.filter((item) => item === url);
     } else {
       urls.push(url);
+      this.setState({
+        links: this.state.links.concat(urls),
+      });
     }
   }
   render() {
     return (
-      <div>
-        <link
-          href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
-          rel="stylesheet"
-        />
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-8 col-lg-6  column col-sm-offset-0 col-md-offset-2 col-lg-offset-3">
-              <form onSubmit={this.handleSubmit} className="form-horizontal">
-                <fieldset>
-                  {/* Form Name */}
-                  <legend>Create your room </legend>
-                  {/* Select Basic */}
-                  <div className="form-group">
-                    <label
-                      className="col-md-3 control-label"
-                      htmlFor="selectbasic"
-                    >
-                      Select Location
-                    </label>
-                    <div className="col-md-9">
-                      <select
-                        id="selectbasic"
-                        name="selectbasic"
-                        className="form-control"
-                      >
-                        <option value={1}>Coxs Bazar</option>
-                        <option value={2}>Shajek</option>
-                        <option value={3}>Bandarban</option>
-                      </select>
-                    </div>
-                  </div>
-                  {/* Text input*/}
-                  <div className="form-group">
-                    <label
-                      className="col-md-3 control-label"
-                      htmlFor="textinput"
-                    >
-                      Room Capacity
-                    </label>
-                    <div className="col-md-3">
-                      <input
-                        id="textinput"
-                        name="textinput"
-                        type="text"
-                        placeholder="placeholder"
-                        className="form-control input-md"
-                      />
-                    </div>
-                    {/* Multiple Radios (inline) */}
-                    <label className="col-md-3 control-label" htmlFor="radios">
-                      Post as add
-                    </label>
-                    <div className="col-md-3">
-                      <label className="radio-inline" htmlFor="radios-0">
-                        <input
-                          type="radio"
-                          name="radios"
-                          id="radios-0"
-                          defaultValue={1}
-                          defaultChecked="checked"
-                        />
-                        Yes
-                      </label>
-                      <label className="radio-inline" htmlFor="radios-1">
-                        <input
-                          type="radio"
-                          name="radios"
-                          id="radios-1"
-                          defaultValue={2}
-                        />
-                        No
-                      </label>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label
-                      className="col-md-3 control-label"
-                      htmlFor="textinput"
-                    >
-                      Available from :{" "}
-                    </label>
-                    <div className="col-md-4">
-                      <input
-                        id="textinput"
-                        name="textinput"
-                        type="date"
-                        placeholder="placeholder"
-                        className="form-control input-md"
-                      />
-                    </div>
-                    <label
-                      className="col-md-1 control-label"
-                      htmlFor="textinput"
-                    >
-                      Availabe till:{" "}
-                    </label>
-                    <div className="col-md-4">
-                      <input
-                        id="textinput"
-                        name="textinput"
-                        type="date"
-                        placeholder="placeholder"
-                        className="form-control input-md"
-                      />
-                    </div>
-                  </div>
-                  {/* Textarea */}
-                  <div className="form-group">
-                    <label
-                      className="col-md-3 control-label"
-                      htmlFor="textarea"
-                    >
-                      Title
-                    </label>
-                    <div className="col-md-9">
-                      <textarea
-                        className="form-control"
-                        id="textarea"
-                        name="textarea"
-                        defaultValue={"Write your description here"}
-                      />
-                    </div>
-                  </div>
-                  {/* Button (Double) */}
-
-                  <div className="form-group">
-                    <div className="col-md-12">
-                      <Uploader getFiles={this.getFilesUrl} />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label
-                      className="col-md-3 control-label"
-                      htmlFor="button1id"
-                    />
-                    <div className="col-md-8">
-                      <button
-                        id="button1id"
-                        name="button1id"
-                        className="btn btn-success btn-lg"
-                      >
-                        Save
-                      </button>
-                      <button
-                        id="button2id"
-                        name="button2id"
-                        className="btn btn-danger btn-lg"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
+      <div className="row col-md-4 offset-3">
+        <form>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="inputEmail4">Title</label>
+              <input
+                type="text"
+                className="form-control"
+                id="title"
+                value={this.state.title}
+                name="title"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label htmlFor="description">Description</label>
+              <input
+                type="text"
+                className="form-control"
+                id="description"
+                name="description"
+                value={this.state.descriptipon}
+                onChange={this.handleChange}
+              />
             </div>
           </div>
-        </div>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="inputAddress">Location</label>
+              <input
+                type="text"
+                className="form-control"
+                id="location"
+                name="location"
+                value={this.state.location}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label htmlFor="inputAddress">Capacity</label>
+              <input
+                type="text"
+                className="form-control"
+                id="capacity"
+                name="capacity"
+                value={this.state.capacity}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label htmlFor="inputCity">City</label>
+              <input
+                type="text"
+                className="form-control"
+                id="city"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="form-group col-md-6">
+              <label htmlFor="inputZip">Mobile Number</label>
+              <input
+                type="text"
+                className="form-control"
+                id="mobile"
+                name="mobile"
+                value={this.state.mobile}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="form-group col-md-6">
+              <label htmlFor="availableFrom">Available From</label>
+              <input
+                class="form-control"
+                type="date"
+                id="availableFrom"
+                name="availableFrom"
+                value={this.state.availableFrom}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label htmlFor="availableTill">Available Till</label>{" "}
+              <input
+                class="form-control"
+                type="date"
+                id="availableTill"
+                name="availableTill"
+                value={this.state.availableTill}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group col-md-12">
+              <Uploader getFiles={this.getFilesUrl} />
+            </div>
+          </div>
+
+          <button
+            onClick={this.handleSubmit}
+            className="btn btn-success btn-lg btn-block"
+          >
+            Save Room
+          </button>
+        </form>
       </div>
     );
   }

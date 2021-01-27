@@ -9,6 +9,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.4.3",
+    "react-date-picker": "^8.0.6",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.2.4",
     "react-dropzone-uploader": "^2.11.0",
@@ -44,5 +46,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8081"
+  "proxy": "http://localhost:5000"
 }
