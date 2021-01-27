@@ -4,7 +4,10 @@ import { showDetails, fetchRooms } from "../actions";
 import { v4 as uuidv4 } from "uuid";
 import SearchBar from "./Search";
 
-class RoomList extends Component {
+const divStyle = {
+  marginTop: "70px",
+};
+class HotelList extends Component {
   componentDidMount() {
     this.props.fetchRooms();
   }
@@ -15,7 +18,10 @@ class RoomList extends Component {
           <span>
             <p>{room.title}</p>
             <p>{room.rating}</p>
-            <button onClick={() => this.props.showDetails(room)}>
+            <button
+              className="btn btn-lg btn-outline-success"
+              onClick={() => this.props.showDetails(room)}
+            >
               Show details
             </button>
           </span>
@@ -27,7 +33,7 @@ class RoomList extends Component {
     return (
       <div>
         <SearchBar />
-        {this.renderList()}
+        <div style={divStyle}>{this.renderList()}</div>
       </div>
     );
   }
@@ -36,4 +42,4 @@ class RoomList extends Component {
 const mapStateToProps = ({ rooms }) => {
   return { rooms: rooms };
 };
-export default connect(mapStateToProps, { showDetails, fetchRooms })(RoomList);
+export default connect(mapStateToProps, { showDetails, fetchRooms })(HotelList);
