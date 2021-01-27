@@ -145,3 +145,9 @@ body {
 #searchBar .filter .search-button button:focus {
     outline: 0 !important;
 }
+.ex{
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem
+}
