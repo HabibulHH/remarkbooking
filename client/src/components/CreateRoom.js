@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { fetchRooms } from "../actions";
 import { Uploader } from "./Uploader";
 const axios = require("axios");
-
+const styles = {
+  display: "flex",
+};
 class CreateRoom extends Component {
   constructor() {
     super();
@@ -46,15 +48,20 @@ class CreateRoom extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios
-      .post("/save", { ...this.state })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log(this.state);
+    if (this.state.title && this.state.imageUrls) {
+      axios
+        .post("/save", { ...this.state })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(this.state);
+    } else {
+      alert("You can not keep fileds empty");
+      return;
+    }
   }
   getFilesUrl(url, remove) {
     let urls = [];
@@ -69,11 +76,13 @@ class CreateRoom extends Component {
   }
   render() {
     return (
-      <div className="row col-md-4 offset-3">
+      <div className="row col-md-4 offset-4">
         <form>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label htmlFor="inputEmail4">Title</label>
+              <label style={styles} htmlFor="inputEmail4">
+                Title
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -84,7 +93,9 @@ class CreateRoom extends Component {
               />
             </div>
             <div className="form-group col-md-6">
-              <label htmlFor="description">Description</label>
+              <label style={styles} htmlFor="description">
+                Description
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -97,7 +108,9 @@ class CreateRoom extends Component {
           </div>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label htmlFor="inputAddress">Location</label>
+              <label style={styles} htmlFor="inputAddress">
+                Location
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -108,7 +121,9 @@ class CreateRoom extends Component {
               />
             </div>
             <div className="form-group col-md-6">
-              <label htmlFor="inputAddress">Capacity</label>
+              <label style={styles} htmlFor="inputAddress">
+                Capacity
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -122,7 +137,9 @@ class CreateRoom extends Component {
 
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label htmlFor="city">City</label>
+              <label style={styles} htmlFor="city">
+                City
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -134,7 +151,9 @@ class CreateRoom extends Component {
             </div>
 
             <div className="form-group col-md-6">
-              <label htmlFor="inputZip">Mobile Number</label>
+              <label style={styles} htmlFor="inputZip">
+                Mobile Number
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -146,7 +165,9 @@ class CreateRoom extends Component {
             </div>
 
             <div className="form-group col-md-6">
-              <label htmlFor="availableFrom">Available From</label>
+              <label style={styles} htmlFor="availableFrom">
+                Available From
+              </label>
               <input
                 class="form-control"
                 type="date"
@@ -157,7 +178,9 @@ class CreateRoom extends Component {
               />
             </div>
             <div className="form-group col-md-6">
-              <label htmlFor="availableTill">Available Till</label>{" "}
+              <label style={styles} htmlFor="availableTill">
+                Available Till
+              </label>{" "}
               <input
                 class="form-control"
                 type="date"
