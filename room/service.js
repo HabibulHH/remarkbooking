@@ -12,9 +12,12 @@ exports.getRooms = function (query, page, limit) {
 };
 
 exports.saveRoom = async function (data) {
-  console.log(data.query);
   try {
-    let doc = new Room(data.query);
+    let doc = new Room(data.body);
+    // Room.deleteMany({}, function (err) {
+    //   if (err) console.log(err);
+    //   console.log("Successful deletion");
+    // });
     doc.save((err, doc) => {
       if (err) console.log(err);
       else {

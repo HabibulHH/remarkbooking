@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { showDetails, fetchRooms } from "../actions";
 import { v4 as uuidv4 } from "uuid";
 import SearchBar from "./Search";
+import "./styles.css";
+
+const divStyle = {
+  marginTop: "70px",
+};
 
 class RoomList extends Component {
   componentDidMount() {
@@ -15,7 +20,10 @@ class RoomList extends Component {
           <span>
             <p>{room.title}</p>
             <p>{room.rating}</p>
-            <button onClick={() => this.props.showDetails(room)}>
+            <button
+              className="btn btn-lg btn-outline-success"
+              onClick={() => this.props.showDetails(room)}
+            >
               Show details
             </button>
           </span>
@@ -27,7 +35,7 @@ class RoomList extends Component {
     return (
       <div>
         <SearchBar />
-        {this.renderList()}
+        <div style={divStyle}>{this.renderList()}</div>
       </div>
     );
   }

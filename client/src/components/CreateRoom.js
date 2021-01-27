@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchRooms } from "../actions";
 import { Uploader } from "./Uploader";
+const axios = require("axios");
 
 class CreateRoom extends Component {
   constructor() {
@@ -11,9 +12,9 @@ class CreateRoom extends Component {
     this.getFilesUrl = this.getFilesUrl.bind(this);
     this.state = {
       title: "",
-      descriptipon: "",
+      description: "",
       location: "",
-      links: [],
+      imageUrls: [],
       city: "",
       mobile: "",
       availableFrom: new Date(),
@@ -45,6 +46,14 @@ class CreateRoom extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    axios
+      .post("/save", { ...this.state })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     console.log(this.state);
   }
   getFilesUrl(url, remove) {
@@ -54,7 +63,7 @@ class CreateRoom extends Component {
     } else {
       urls.push(url);
       this.setState({
-        links: this.state.links.concat(urls),
+        imageUrls: this.state.imageUrls.concat(urls),
       });
     }
   }
@@ -81,7 +90,7 @@ class CreateRoom extends Component {
                 className="form-control"
                 id="description"
                 name="description"
-                value={this.state.descriptipon}
+                value={this.state.description}
                 onChange={this.handleChange}
               />
             </div>
@@ -113,7 +122,7 @@ class CreateRoom extends Component {
 
           <div className="form-row">
             <div className="form-group col-md-6">
-              <label htmlFor="inputCity">City</label>
+              <label htmlFor="city">City</label>
               <input
                 type="text"
                 className="form-control"

@@ -1,7 +1,10 @@
 const express = require("express");
 const routes = require("./route");
+
 require("./db");
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 const cors = require("cors");
 
 app.options("*", cors());
