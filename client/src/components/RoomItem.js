@@ -39,7 +39,7 @@ const RoomItem = (props) => {
                     <img
                       className="d-block img-fluid"
                       src={
-                        "https://source.unsplash.com/1600x900/?nature,resorts"
+                        "https://source.unsplash.com/1600x900/?travel,resorts"
                       }
                       alt="First slide"
                     />
@@ -47,7 +47,7 @@ const RoomItem = (props) => {
                   <div className="carousel-item">
                     <img
                       className="d-block img-fluid"
-                      src="./img/posts/img_1.jpg"
+                      src={"https://source.unsplash.com/1600x900/?travel,sea"}
                       alt="Third slide"
                     />
                   </div>
@@ -84,7 +84,7 @@ const RoomItem = (props) => {
               </div>
             </div>
             <div className="details">
-              <h3>Apartments on Belinskogo ulitsa</h3>
+              <h3>{props.room.title}</h3>
               <div className="tag-list">
                 <span>2 Guests</span>
                 <span>1 bedroom</span>
