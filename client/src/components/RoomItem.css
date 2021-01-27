@@ -1,0 +1,161 @@
+/***** Google fonts *****/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+/***********css Post*********/
+
+
+.post {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+    padding: 30px 0;
+    position: relative;
+}
+
+.post .fev-icon {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    background-color: #fff;
+    display: flex;
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.post img {
+    border-radius: 5px;
+}
+
+.post .bottom,
+.post .top {
+    display: flex;
+}
+
+.post .bottom > div,
+.post .top > div {
+    flex: 1;
+}
+
+.post .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+}
+
+.post .bottom button svg,
+.post .bottom button i {
+    font-size: 12px;
+}
+
+.post .bottom button {
+    border: none;
+    border-radius: 50px;
+    background-color: #e6e6e6;
+    font-weight: 600;
+    padding: 4px 10px;
+}
+.post .bottom .special-tag {
+    display: flex;
+    align-items: flex-end;
+}
+.post .bottom .price-container .face-value{
+    font-size: 20px;
+}
+.post .bottom .price-container .total-value{
+    color: #888888;
+}
+
+.post .top p {
+    color: #888;
+    font-size: 14px;
+}
+
+.post .top .rating-text span i,
+.post .top .rating-text span svg {
+    color: #febb02;
+    margin-right: 5px;
+    font-size: 12px;
+    vertical-align: baseline;
+}
+
+.post .top .rating-text span {
+    font-size: 14px;
+    color: #333333;
+}
+
+.post .top .rating-text span span {
+    color: #888;
+    padding-left: 5px
+}
+
+.post .details {
+    padding: 5px 0 50px 0;
+}
+
+.post .details h3 {
+    padding-bottom: 10px;
+}
+
+.post .details .tag-list {
+    padding-bottom: 5px;
+}
+
+.post .details .tag-list span {
+    color: #888888;
+    position: relative;
+    padding: 0 6px;
+    display: inline-block;
+    margin: 0;
+}
+
+.post .details .tag-list span:after {
+    content: '.';
+    color: #888888;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+}
+
+.post .details .tag-list span:last-child:after {
+    display: none;
+}
+
+.post .details .tag-list span:first-child {
+    padding-left: 0;
+}
+
+.img-slider .carousel-control-next,
+.img-slider .carousel-control-prev {
+    height: 35px;
+    width: 35px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+    top: calc(50% - 17px);
+    margin: 0 15px;
+    opacity: 0.8 !important;
+    transition: all 0.5s ;
+}
+.img-slider .carousel-control-next:hover,
+.img-slider .carousel-control-prev:hover {
+    opacity: 1 !important;
+}
+.img-slider .carousel-indicators li {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+}

@@ -31,6 +31,7 @@ exports.saveRoom = async function (req, res, next) {
 };
 
 exports.saveImage = async function (req, res, next) {
+  console.log(req);
   try {
     let urls = await multipleUpload(req, res);
     return res.status(200).json({
@@ -44,7 +45,7 @@ exports.saveImage = async function (req, res, next) {
 };
 const multipleUpload = async (req, res) => {
   try {
-    await upload(req, res);
+    await upload(req.body, res);
     console.log(req.files);
 
     if (req.files.length <= 0) {

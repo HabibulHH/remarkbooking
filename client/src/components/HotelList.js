@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { showDetails, fetchRooms } from "../actions";
 import { v4 as uuidv4 } from "uuid";
 import SearchBar from "./Search";
+import "./RoomItem.css";
+import RoomItem from "./RoomItem";
 
 const divStyle = {
   marginTop: "70px",
@@ -13,27 +15,17 @@ class HotelList extends Component {
   }
   renderList() {
     return this.props.rooms.map((room) => {
-      return (
-        <div key={uuidv4()}>
-          <span>
-            <p>{room.title}</p>
-            <p>{room.rating}</p>
-            <button
-              className="btn btn-lg btn-outline-success"
-              onClick={() => this.props.showDetails(room)}
-            >
-              Show details
-            </button>
-          </span>
-        </div>
-      );
+      return <RoomItem room={room} />;
     });
   }
   render() {
     return (
       <div>
         <SearchBar />
-        <div style={divStyle}>{this.renderList()}</div>
+
+        <div className="container">
+          <div style={divStyle}>{this.renderList()}</div>
+        </div>
       </div>
     );
   }

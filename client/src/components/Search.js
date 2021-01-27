@@ -2,6 +2,8 @@ import "./styles.css";
 import React, { Component, useState } from "react";
 import Select from "react-select";
 import DateRnage from "./Date";
+import { Selector } from "./Selector";
+let toggle = true;
 function SearchBar() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -11,9 +13,17 @@ function SearchBar() {
     setLocation(locaiton.value);
   };
 
+  const showHideModal = () => {
+    toggle = toggle ? false : true;
+  };
+
   const handleSearch = () => {
     // call search api
     console.log(startDate, "......", endDate, ".....", location);
+  };
+
+  const openModal = () => {
+    return true;
   };
   const handleChange = (event) => {
     event.preventDefault();
@@ -64,7 +74,14 @@ function SearchBar() {
               />
             </div>
           </div>
-          <div className="room-select" />
+          <div onClick={showHideModal} className="room-select">
+            <div className="row">
+              <div className="col-md-6"></div>
+              <div className="col-md-6">
+                <Selector />
+              </div>
+            </div>
+          </div>
           <div className="search-button">
             <button onClick={handleSearch}>Search</button>
           </div>

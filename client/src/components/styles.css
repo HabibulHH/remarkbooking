@@ -171,8 +171,20 @@ body {
     .css-2b097c-container{
         margin-top: -5px !important;
     }
-    .css-1phadxg-control{
+    .css-1pahdxg-control{
         max-height: 0px !important;
         min-height: 0px !important;
         outline: none !important;
     }
+    .css-1pahdxg-control:focus{
+        outline: none !important;
+    }
+    .w_50{
+        width: 50px;
+        height: 33px;
+    }
+
+    .middle{
+        text-align: center;
+    }
+  
