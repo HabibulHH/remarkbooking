@@ -112,7 +112,7 @@ body {
 #searchBar .filter .date-range {
     margin: 0 2px;
     flex: 1;
-    max-width: 200px;
+    max-width: 300px;
     background-color: #ffffff;
     height: 40px;
 }
@@ -145,3 +145,34 @@ body {
 #searchBar .filter .search-button button:focus {
     outline: 0 !important;
 }
+.ex{
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem
+}
+
+
+.mt-70 {
+    margin-top: 70px !important;
+  }
+  
+ 
+  .css-yk16xz-control{
+    margin: 12 0 0 0;
+    height: 33px !important;
+    outline: 0!important;
+    border-width: 0px !important;
+    max-height: 0px !important;
+    min-height: 0px !important;
+     
+    }
+
+    .css-2b097c-container{
+        margin-top: -5px !important;
+    }
+    .css-1phadxg-control{
+        max-height: 0px !important;
+        min-height: 0px !important;
+        outline: none !important;
+    }
