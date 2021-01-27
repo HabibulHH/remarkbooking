@@ -30,7 +30,7 @@ const RoomItem = (props) => {
                     <img
                       className="d-block img-fluid"
                       src={
-                        "https://source.unsplash.com/collection/190727/1600x900"
+                        "https://source.unsplash.com/1600x900/?resorts,hotels"
                       }
                       alt="First slide"
                     />
@@ -39,7 +39,7 @@ const RoomItem = (props) => {
                     <img
                       className="d-block img-fluid"
                       src={
-                        "https://source.unsplash.com/collection/190726/1600x900"
+                        "https://source.unsplash.com/1600x900/?nature,resorts"
                       }
                       alt="First slide"
                     />
