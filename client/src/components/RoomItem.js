@@ -1,7 +1,15 @@
 import "./RoomItem.css";
-
+import SimpleSlider from "./Slider";
 const RoomItem = (props) => {
-  console.log(props.room.imageUrls[0]);
+  const renderImage = (src) => {
+    return (
+      <div className="carousel-item">
+        <img className="d-block img-fluid" src={src} alt="Third slide" />
+      </div>
+    );
+  };
+
+  const urls = props.room.imageUrls;
   return (
     <div className="all-posts">
       <div className="post">
@@ -16,56 +24,7 @@ const RoomItem = (props) => {
                 className="carousel slide"
                 data-ride="carousel"
               >
-                <ol className="carousel-indicators">
-                  <li
-                    data-target="#postCarouselId"
-                    data-slide-to={0}
-                    className="active"
-                  />
-                  <li data-target="#postCarouselId" data-slide-to={1} />
-                  <li data-target="#postCarouselId" data-slide-to={2} />
-                </ol>
-                <div className="carousel-inner" role="listbox">
-                  <div className="carousel-item active">
-                    <img
-                      className="d-block img-fluid"
-                      src={props.room.imageUrls[0]}
-                      alt="First slide"
-                    />
-                  </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block img-fluid"
-                      src={
-                        "https://source.unsplash.com/1600x900/?travel,resorts"
-                      }
-                      alt="First slide"
-                    />
-                  </div>
-                  <div className="carousel-item">
-                    <img
-                      className="d-block img-fluid"
-                      src={"https://source.unsplash.com/1600x900/?travel,sea"}
-                      alt="Third slide"
-                    />
-                  </div>
-                </div>
-                <a
-                  className="carousel-control-prev"
-                  href="#postCarouselId"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <i className="fas fa-chevron-left" />
-                </a>
-                <a
-                  className="carousel-control-next"
-                  href="#postCarouselId"
-                  role="button"
-                  data-slide="next"
-                >
-                  <i className="fas fa-chevron-right" />
-                </a>
+                {<SimpleSlider urls={urls} />}
               </div>
             </div>
           </div>
