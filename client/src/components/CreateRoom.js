@@ -47,6 +47,7 @@ class CreateRoom extends Component {
   componentDidMount() {}
 
   handleSubmit(event) {
+    console.log(this.state);
     event.preventDefault();
     if (this.state.title && this.state.imageUrls) {
       axios
@@ -64,13 +65,14 @@ class CreateRoom extends Component {
     }
   }
   getFilesUrl(url, remove) {
+    alert(url);
     let urls = [];
     if (remove === "removed") {
       urls = urls.filter((item) => item === url);
     } else {
       urls.push(url);
       this.setState({
-        imageUrls: this.state.imageUrls.concat(urls),
+        imageUrls: this.state.imageUrls.concat(url),
       });
     }
   }

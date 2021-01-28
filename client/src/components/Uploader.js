@@ -1,12 +1,13 @@
 import React, { useCallback } from "react";
 import "react-dropzone-uploader/dist/styles.css";
-import Dropzone from "react-dropzone-uploader";
+import Dropzone, { formatBytes } from "react-dropzone-uploader";
+import { Form } from "react-bootstrap";
 const axios = require("axios");
 
 export const Uploader = ({ getFiles }) => {
   const getUploadParams = (file, { meta }) => {
-    console.log(file);
-    const url = "https://httpbin.org/post";
+    console.log(file, ".........");
+    const url = "http://localhost:5000/rooms/";
     return {
       url,
       meta: { fileUrl: `${url}/${encodeURIComponent(meta.name)}` },
@@ -17,25 +18,21 @@ export const Uploader = ({ getFiles }) => {
 
   const handleChangeStatus = ({ meta, file }, status) => {
     console.log(file);
+    let formData = new FormData();
+    formData.append("rooms", file);
+    formData.append("single", { value: true });
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
     axios
-      .post("/image", file, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      .post("/upload", formData, config)
+      .then((response) => {
+        // console.log("response.....", response);
+        getFiles(response.data.profile_url);
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    if (status === "done") {
-      getFiles(meta.fileUrl);
-    }
-    if (status === "removed") {
-      getFiles(meta.fileUrl, "remove");
-    }
+      .catch((error) => {});
   };
 
   const handleSubmit = (files, allFiles) => {

@@ -29,9 +29,7 @@ const RoomItem = (props) => {
                   <div className="carousel-item active">
                     <img
                       className="d-block img-fluid"
-                      src={
-                        "https://source.unsplash.com/1600x900/?resorts,hotels"
-                      }
+                      src={props.room.imageUrls[0]}
                       alt="First slide"
                     />
                   </div>

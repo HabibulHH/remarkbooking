@@ -1,8 +1,8 @@
 const util = require("util");
 const path = require("path");
 const multer = require("multer");
-
-var storage = multer.diskStorage({
+console.log("i am here.........");
+const storage = multer.diskStorage({
   destination: "./upload/images",
   filename: (req, file, callback) => {
     const match = ["image/png", "image/jpeg"];
