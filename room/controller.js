@@ -2,6 +2,7 @@ const RoomService = require("./service");
 const multer = require("multer");
 const upload = require("./uploadImage");
 const path = require("path");
+
 exports.getRooms = async function (req, res, next) {
   const page = req.params.page ? req.params.page : 1;
   const limit = req.params.limit ? req.params.limit : 10;
@@ -73,5 +74,18 @@ const multipleUpload = async (req, res) => {
       return res.send("Too many files to upload.");
     }
     return res.send(`Error when trying upload many files: ${error}`);
+  }
+};
+
+exports.deleteAll = async function (req, res, next) {
+  try {
+    const users = await RoomService.deleteAll();
+    return res.status(200).json({
+      status: 200,
+      data: users,
+      message: "Succesfully Deleted",
+    });
+  } catch (e) {
+    return res.status(400).json({ status: 400, message: e.message });
   }
 };

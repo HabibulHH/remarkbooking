@@ -29,3 +29,14 @@ exports.saveRoom = async function (data) {
     throw Error(e);
   }
 };
+
+exports.deleteAll = async function (data) {
+  try {
+    Room.deleteMany({}, function (err) {
+      if (err) console.log(err);
+      console.log("Successful deletion");
+    });
+  } catch (e) {
+    throw Error(e);
+  }
+};
