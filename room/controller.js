@@ -21,18 +21,9 @@ exports.getRooms = async function (req, res, next) {
 exports.searrchRooms = async function (req, res, next) {
   const page = req.params.page ? req.params.page : 1;
   const limit = req.params.limit ? req.params.limit : 10;
-  console.log(req.query, "..........");
-
   try {
-    const users = await RoomService.getRooms({
-      city: req.city,
-      availableTill: {
-        $gte: new Date(new Date(req.query.availableFrom).setHours(00, 00, 00)),
-        $lt: new Date(new Date(req.query.availableTill).setHours(23, 59, 59)),
-      },
-      page,
-      limit,
-    });
+    const users = await RoomService.searchRooms(req.query);
+
     return res.status(200).json({
       status: 200,
       data: users,
