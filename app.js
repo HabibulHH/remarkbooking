@@ -12,8 +12,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
+
 app.use(bodyParser.json());
-app.options("*", cors());
+app.use(cors());
 app.use(routes);
 app.use("/rooms", express.static("upload/images"));
 

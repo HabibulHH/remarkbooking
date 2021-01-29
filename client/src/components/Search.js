@@ -3,8 +3,16 @@ import React, { Component, useState } from "react";
 import Select from "react-select";
 import DateRnage from "./Date";
 import { Selector } from "./Selector";
+import { connect } from "react-redux";
+import { searchRooms } from "../actions";
+import { useDispatch, mapStateToProps } from "react-redux";
+import * as CONSTANTS from "../constants/redux-constants";
+
 let toggle = true;
-function SearchBar() {
+
+function SearchBar(props) {
+  const dispatch = useDispatch();
+
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [location, setLocation] = useState("");
@@ -18,13 +26,19 @@ function SearchBar() {
   };
 
   const handleSearch = () => {
-    // call search api
-    console.log(startDate, "......", endDate, ".....", location);
+    console.log("............");
+
+    props.searchRooms({
+      availableFrom: startDate,
+      availableTill: endDate,
+      city: location,
+    });
   };
 
   const openModal = () => {
     return true;
   };
+
   const handleChange = (event) => {
     event.preventDefault();
     const target = event.target;
@@ -91,12 +105,12 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
-
+export default connect(null, { searchRooms })(SearchBar);
 const options = [
   { value: "Coxs Bazar", label: "Coxs Bazar" },
   { value: "Shajek", label: "Shajek" },
   { value: "Bandarban", label: "Bandarban" },
+  { value: "Dhaka", label: "Dhaka" },
 ];
 
 const DropDown = (props) => (
