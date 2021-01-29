@@ -11,13 +11,31 @@ exports.getRooms = function (query, page, limit) {
   }
 };
 
+exports.searchRooms = function (query, page, limit) {
+  try {
+    let rooms = Room.find(
+      {
+        city: query.city,
+        availableTill: {
+          $gte: new Date(new Date(query.availableFrom).setHours(00, 00, 00)),
+          $lt: new Date(new Date(query.availableTill).setHours(23, 59, 59)),
+        },
+      },
+      page,
+      limit
+    );
+    return rooms;
+  } catch (e) {
+    // Log Errors
+    console.log(e);
+    throw Error("Error while Paginating Users");
+  }
+};
+
 exports.saveRoom = async function (data) {
   try {
     let doc = new Room(data.body);
-    // Room.deleteMany({}, function (err) {
-    //   if (err) console.log(err);
-    //   console.log("Successful deletion");
-    // });
+
     doc.save((err, doc) => {
       if (err) console.log(err);
       else {

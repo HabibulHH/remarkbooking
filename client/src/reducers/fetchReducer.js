@@ -4,6 +4,9 @@ export default (state = [], action) => {
     case CONSTANTS.FETCH_ROOMS: {
       return action.payload;
     }
+    case CONSTANTS.SEARCH_ROOMS: {
+      return action.payload;
+    }
     default:
       return state;
   }

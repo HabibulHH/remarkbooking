@@ -37,8 +37,6 @@ class CreateRoom extends Component {
     }
     //const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    console.log(name);
-    console.log(value);
     this.setState({
       [name]: value,
     });
@@ -50,6 +48,7 @@ class CreateRoom extends Component {
     console.log(this.state);
     event.preventDefault();
     if (this.state.title && this.state.imageUrls) {
+      console.log(this.state);
       axios
         .post("/save", { ...this.state })
         .then(function (response) {
